@@ -1,17 +1,18 @@
 .comment-form__field {
   /* font-size * line-height * lines * vertical-padding */
-  --height: calc(16px * 1.4 * 4 + 10px * 2);
+  --height: calc(16px * 1.4 * 2 + 10px * 2);
 
   display: block;
   box-sizing: border-box;
   width: 100%;
   height: var(--height);
   min-height: var(--height);
-  padding: 10px 12px;
+  padding: 8px 16px;
   margin: 0;
   font-size: 16px;
   line-height: 1.4;
-  border: 0;
+  border: 1px solid var(--color11);
+  border-radius: 3px;
   resize: none;
   overflow: hidden; /* prevent scrollbar from appearing */
   backface-visibility: hidden; /* let's try to fix blinking in Safari */

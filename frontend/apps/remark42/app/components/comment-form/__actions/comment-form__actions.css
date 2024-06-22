@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   padding-top: 12px;
+  flex-direction: row-reverse;
   flex-wrap: wrap;
   justify-content: space-between;
   min-height: 30px;

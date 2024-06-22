@@ -1,3 +1,7 @@
 .root__threads {
   margin-top: 4px;
 }
+
+.root__threads > div:not(:last-child) {
+  border-bottom: 1px dashed #afafaf;
+}

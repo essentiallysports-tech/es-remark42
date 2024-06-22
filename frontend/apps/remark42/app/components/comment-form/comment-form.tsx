@@ -530,7 +530,7 @@ export class CommentForm extends Component<Props, State> {
 export const messages = defineMessages({
   placeholder: {
     id: 'commentForm.input-placeholder',
-    defaultMessage: 'Your comment here',
+    defaultMessage: 'Share your thoughts',
   },
   uploadFileFail: {
     id: 'commentForm.upload-file-fail',

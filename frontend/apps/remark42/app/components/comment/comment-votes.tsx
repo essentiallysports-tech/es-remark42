@@ -12,6 +12,7 @@ import { ArrowIcon } from 'components/icons/arrow';
 import styles from './comment-votes.module.css';
 import { Tooltip } from 'components/tooltip';
 import { extractErrorMessageFromResponse } from 'utils/errorUtils';
+import {VoteIcon} from "../icons/vote";
 
 type Props = {
   id: string;
@@ -58,7 +59,7 @@ export function CommentVotes({ id, votes, vote, disabled }: Props) {
           title={intl.formatMessage(messages.downvote)}
           disabled={loadingState !== null || isDownvoted || isPositiveScore}
         >
-          <ArrowIcon className={styles.downVoteIcon} />
+          <VoteIcon className={styles.downVoteIcon} />
         </button>
       )}
       <Tooltip
@@ -90,7 +91,7 @@ export function CommentVotes({ id, votes, vote, disabled }: Props) {
           title={intl.formatMessage(messages.upvote)}
           disabled={loadingState !== null || isUpvoted}
         >
-          <ArrowIcon className={styles.upVoteIcon} />
+          <VoteIcon className={styles.upVoteIcon} />
         </button>
       )}
     </span>

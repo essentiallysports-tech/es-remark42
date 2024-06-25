@@ -1,9 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
-  padding: 6px;
-  font-family: system-ui;
+  /*padding: 6px;*/
+  /*font-family: system-ui;*/
+  padding: 0 0 24px 0;
+  font-family: "Inter", sans-serif;
   font-size: 14px;
   color: rgb(var(--primary-text-color));
   box-sizing: border-box;
@@ -105,4 +108,39 @@ a {
   40% {
     box-shadow: 0 10px 0 0;
   }
+}
+
+.start_convo__block {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 16px 0 16px;
+  align-items: center;
+  gap: 10px;
+  height: 145px;
+}
+
+.start_convo__block div {
+  color: #595959;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 130%;
+}
+
+.start_convo__block strong {
+  color: #373737;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 100%;
+}
+
+div:has(+ .start_convo__block) {
+  height: 0;
+  clip-path: content-box;
+}
+
+.comment-cta,
+div:has(> .comment-cta) {
+  width: 100%;
 }

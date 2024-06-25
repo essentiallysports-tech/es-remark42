@@ -8,6 +8,10 @@
     }
   }
 
+  & .comment__body {
+    padding-left: 0;
+  }
+
   & .comment__info {
     margin-bottom: 0;
     opacity: 0.8;

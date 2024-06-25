@@ -45,7 +45,7 @@
   }
 
   & .comment__time {
-    color: var(--color35);
+    color: var(--color11);
 
     &:hover {
       color: var(--color1);

@@ -1,7 +1,7 @@
 .sortPicker {
   display: flex;
-  justify-content: flex-end;
-  margin-top: 24px;
+  justify-content: flex-start;
+  margin-top: 16px;
   font-size: 14px;
 }
 
@@ -9,4 +9,8 @@
   display: block;
   max-width: 320px;
   margin: 20px auto;
+  background: none !important;
+  border: 1px solid rgb(var(--primary-color)) !important;
+  border-radius: 1px;
+  color: rgb(var(--primary-color)) !important;
 }

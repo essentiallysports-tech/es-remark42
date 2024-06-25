@@ -25,7 +25,7 @@ func NewGoogle(p Params) Oauth2Handler {
 	return initOauth2Handler(p, Oauth2Handler{
 		name:     "google",
 		endpoint: google.Endpoint,
-		scopes:   []string{"https://www.googleapis.com/auth/userinfo.profile"},
+		scopes:   []string{"https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email"},
 		infoURL:  "https://www.googleapis.com/oauth2/v3/userinfo",
 		mapUser: func(data UserData, _ []byte) token.User {
 			userInfo := token.User{
@@ -33,6 +33,7 @@ func NewGoogle(p Params) Oauth2Handler {
 				ID:      "google_" + token.HashID(sha1.New(), data.Value("sub")),
 				Name:    data.Value("name"),
 				Picture: data.Value("picture"),
+				Email: data.Value("email"),
 			}
 			if userInfo.Name == "" {
 				userInfo.Name = "noname_" + userInfo.ID[8:12]

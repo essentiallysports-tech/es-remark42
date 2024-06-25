@@ -1,6 +1,8 @@
 .comment__username {
   vertical-align: middle;
-  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 22px;
+  font-weight: 600;
   text-decoration: none;
 
   &:hover {

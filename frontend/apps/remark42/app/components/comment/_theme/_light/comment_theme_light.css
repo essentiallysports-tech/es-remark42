@@ -57,7 +57,7 @@
   }
 
   & .comment__username {
-    color: var(--color10);
+    color: #1a1a1a;
   }
 
   &.comment_editing {

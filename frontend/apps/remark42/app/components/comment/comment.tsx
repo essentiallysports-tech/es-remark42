@@ -263,7 +263,7 @@ export class Comment extends Component<CommentProps, State> {
 
   copyComment = async () => {
     const { name } = this.props.data.user;
-    const time = getLocalDatetime(this.props.intl, new Date(this.props.data.time));
+    const time = getFormattedDate(this.props.intl, new Date(this.props.data.time));
     const text = this.textNode.current?.textContent ?? '';
 
     try {
@@ -430,7 +430,7 @@ export class Comment extends Component<CommentProps, State> {
           </div>
 
           <a href={`${o.locator.url}#${COMMENT_NODE_CLASSNAME_PREFIX}${o.id}`} className="comment__time">
-            {getLocalDatetime(this.props.intl, o.time)}
+            {getFormattedDate(this.props.intl, o.time)}
           </a>
 
           {!!props.level && props.level > 0 && props.view === 'main' && (
@@ -554,11 +554,26 @@ function getTextSnippet(html: string) {
   return snippet.length === LENGTH && result.length !== LENGTH ? `${snippet}...` : snippet;
 }
 
-function getLocalDatetime(intl: IntlShape, date: Date) {
-  return intl.formatMessage(messages.commentTime, {
-    day: intl.formatDate(date),
-    time: intl.formatTime(date),
-  });
+function getFormattedDate(intl: IntlShape, date: Date) {
+  let unit
+  let diff = (Date.now() - date.getTime())/1000
+  if (diff < 180) {
+    return "Just Now";
+  }
+  else if (diff < 3600) {
+    diff = Math.floor(diff / 60);
+    unit = `minute`;
+  }
+  else if (diff < 86400) {
+    diff = Math.floor(diff / 3600);
+    unit =  `hour`;
+  }
+  else {
+    diff = Math.floor(diff / 86400);
+    unit = `day`;
+  }
+  //@ts-ignore
+  return intl.formatRelativeTime(-diff, unit)
 }
 
 const messages = defineMessages({

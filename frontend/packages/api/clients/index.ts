@@ -14,6 +14,7 @@ export interface User {
 	email_subscription?: boolean
 	/** users with Patreon auth can have paid status */
 	paid_sub?: boolean
+	email: string
 }
 
 export type OAuthProvider =

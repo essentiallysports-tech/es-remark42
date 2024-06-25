@@ -2,6 +2,7 @@
   position: relative;
   z-index: 1;
   color: rgb(var(--secondary-text-color));
+  width: 100%;
 }
 
 .buttonArrow {
@@ -22,7 +23,7 @@
   position: absolute;
   z-index: 1;
   top: calc(100% + 8px);
-  left: 0;
+  right: 2%;
   min-width: 240px;
   padding: 16px;
   background-color: rgb(var(--primary-background-color));

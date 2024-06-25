@@ -24,6 +24,7 @@ type User struct {
 	Verified          bool   `json:"verified,omitempty"`
 	EmailSubscription bool   `json:"email_subscription,omitempty"`
 	SiteID            string `json:"site_id,omitempty"`
+	Email             string `json:"email,omitempty"`
 	PaidSub           bool   `json:"paid_sub,omitempty"`
 }
 

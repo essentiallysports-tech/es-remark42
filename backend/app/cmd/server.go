@@ -1205,9 +1205,11 @@ func (s *ServerCommand) getAuthenticator(ds *service.DataStore, avas avatar.Stor
 			c.User.SetAdmin(ds.IsAdmin(c.Audience, c.User.ID))
 			c.User.SetBoolAttr("blocked", ds.IsBlocked(c.Audience, c.User.ID))
 			var err error
-			c.User.Email, err = ds.GetUserEmail(c.Audience, c.User.ID)
-			if err != nil {
-				log.Printf("[WARN] can't read email for %s, %v", c.User.ID, err)
+			if c.User.Email == "" {
+				c.User.Email, err = ds.GetUserEmail(c.Audience, c.User.ID)
+				if err != nil {
+					log.Printf("[WARN] can't read email for %s, %v", c.User.ID, err)
+				}
 			}
 
 			// don't allow anonymous and email with admins names

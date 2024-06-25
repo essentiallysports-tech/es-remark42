@@ -35,6 +35,7 @@ func GetUserInfo(r *http.Request) (user store.User, err error) {
 		Verified: u.BoolAttr("verified"),
 		Blocked:  u.BoolAttr("blocked"),
 		SiteID:   u.Audience,
+		Email:    u.Email,
 		PaidSub:  u.IsPaidSub(),
 	}, nil
 }
@@ -56,6 +57,7 @@ func SetUserInfo(r *http.Request, user store.User) *http.Request {
 		Picture:  user.Picture,
 		IP:       user.IP,
 		Audience: user.SiteID,
+		Email:    user.Email,
 		Attributes: map[string]interface{}{
 			"blocked":  user.Blocked,
 			"verified": user.Verified,

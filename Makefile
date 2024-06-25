@@ -11,14 +11,14 @@ bin:
 	docker rm -f remark42.bin
 
 docker:
-	DOCKER_BUILDKIT=1 docker build --platform linux/amd64,linux/arm/v7,linux/arm64 -t badolamgk/es-remark42 --build-arg GITHUB_REF=$(GITHUB_REF) --build-arg GITHUB_SHA=$(GITHUB_SHA) \
+	DOCKER_BUILDKIT=1 docker build -t umputun/remark42 --build-arg GITHUB_REF=$(GITHUB_REF) --build-arg GITHUB_SHA=$(GITHUB_SHA) \
 		--build-arg CI=true --build-arg SKIP_FRONTEND_TEST=true --build-arg SKIP_BACKEND_TEST=true .
 
 dockerx:
 	docker buildx build --build-arg GITHUB_REF=$(GITHUB_REF) --build-arg GITHUB_SHA=$(GITHUB_SHA) --build-arg CI=true \
 		--build-arg SKIP_FRONTEND_TEST=true --build-arg SKIP_BACKEND_TEST=true \
 		--progress=plain --platform linux/amd64,linux/arm/v7,linux/arm64 \
-		-t ghcr.io/badolamgk/es-remark42:master -t badolamgk/es-remark42:master .
+		-t ghcr.io/umputun/remark42:master -t umputun/remark42:master .
 
 release:
 	docker build -f Dockerfile.artifacts --no-cache --pull --build-arg CI=true \

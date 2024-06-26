@@ -3,6 +3,7 @@ import type { User } from 'common/types';
 import { authFetcher } from 'common/fetcher';
 import { siteId } from 'common/settings';
 import { getUser } from 'common/api';
+import {getCookie} from "../../common/cookies";
 
 const EMAIL_SIGNIN_ENDPOINT = '/email/login';
 const TELEGRAM_SIGNIN_ENDPOINT = '/telegram/login';
@@ -67,7 +68,24 @@ export function oauthSignin(url: string): Promise<User | null> {
 
         return null;
       }
-
+      const ppid = getCookie('ppid')
+      if(!ppid || ppid.includes('xxx') || !user.email){
+        //dont proceed any further
+      }
+      else {
+        await fetch('https://cc8sgcxnz4.execute-api.us-east-1.amazonaws.com/prod', {
+          method: 'POST',
+          body: JSON.stringify({
+            "email": user.email,
+            "email_verified": true,
+            "name": user.name,
+            "picture": user.picture,
+            "ppid": ppid,
+            "pageUrl": document.location.href,
+            "authProvider": "google"
+          })
+        })
+      }
       resolve(user);
       unsubscribe();
     }

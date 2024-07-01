@@ -421,6 +421,11 @@ export class CommentForm extends Component<Props, State> {
     const placeholderMessage = intl.formatMessage(messages.placeholder);
     const isSimpleView = StaticStore.config.simple_view;
 
+    const increaseCount = () => {
+      //@ts-ignore
+      window.parent.postMessage(`increase count:${document.getElementById('textarea_1')?.value}`, "*")
+    }
+
     return (
       <form
         className={b('comment-form', {
@@ -489,7 +494,7 @@ export class CommentForm extends Component<Props, State> {
                     <FormattedMessage id="commentForm.preview" defaultMessage="Preview" />
                   </Button>
                 )}
-                <Button kind="primary" size="large" mix="comment-form__button" type="submit" disabled={isDisabled}>
+                <Button onClick={increaseCount} className={"comment-cta"} kind="primary" size="large" mix="comment-form__button" type="submit" disabled={isDisabled}>
                   {label}
                 </Button>
               </div>

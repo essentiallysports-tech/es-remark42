@@ -30,7 +30,7 @@ func NewGoogle(p Params) Oauth2Handler {
 		mapUser: func(data UserData, _ []byte) token.User {
 			userInfo := token.User{
 				// encode email with provider name to avoid collision if same id returned by other provider
-				ID:      "google_" + token.HashID(sha1.New(), data.Value("sub")),
+				ID:      "google_" + data.Value("sub"),
 				Name:    data.Value("name"),
 				Picture: data.Value("picture"),
 				Email: data.Value("email"),

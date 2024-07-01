@@ -85,8 +85,29 @@
                 c[splitted[0]] = decodeURIComponent(splitted[1]);
                 return c;
               }, {});
-
+	  var getCookie = (cName) => {
+	    const name = cName + '='
+	    const cDecoded = decodeURIComponent(document.cookie);
+	    const cArr = cDecoded.split('; ')
+	    let res
+	    cArr.forEach(val => {
+	  	  if (val.indexOf(name) === 0) res = val.substring(name.length);
+	    })
+	    return res
+	  }
       window.parent.postMessage({ inited: true }, '*');
+      window.addEventListener('message', function(event) {
+      	if(event.data.jwtCookie && event.data.xsrfCookie) {
+      	  const existingJWT = getCookie('JWT')
+      	  if(existingJWT)
+      	  	console.log('already JWT, not setting')
+      	  else {
+			document.cookie = `JWT=${event.data.jwtCookie}; Path=/; Domain=; Max-Age=2678400000000000`
+			document.cookie = `XSRF-TOKEN=${event.data.xsrfCookie}; Path=/; Domain=; Max-Age=2678400000000000`
+			console.log('JWT set')
+      	  }
+      	}
+      })
     </script>
     <script>
       (function (d) {
